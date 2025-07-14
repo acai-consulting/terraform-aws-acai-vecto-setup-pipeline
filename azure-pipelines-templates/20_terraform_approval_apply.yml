@@ -1,0 +1,101 @@
+parameters:
+  - name: awsServiceConnectionName
+    type: string 
+  - name: awsRegionName
+    type: string
+  - name: tfVersion
+    type: string
+    default: 1.6.0
+  - name: tfApplyBranch
+    type: boolean
+  - name: directory
+    type: string
+    default: terraform
+
+stages:
+  - stage: TerraformApproveAndApply
+    displayName: "Terraform AWS-Side Approve & Apply"
+    dependsOn:
+      - TerraformPreparation
+    jobs:
+    - job: TerraformShow
+      displayName: "Terraform Show Plan"
+      steps:
+      - checkout: none
+      - task: DownloadPipelineArtifact@2 
+        displayName: "Download artifact terraform.tfplan.show"
+        inputs: 
+          buildType: current
+          artifactName: terraform.tfplan.show
+          targetPath: ${{ parameters.directory }} 
+
+      - bash: |
+          cd ${{ parameters.directory }} 
+          echo "Show Terraform Plan"
+          cat terraform.tfplan.show 
+        displayName: Show terraform plan
+
+    - job: waitForValidation
+      displayName: Wait for manual approval
+      condition: |
+        and(
+          eq(${{ parameters.tfApplyBranch }}, true), 
+          eq(variables['Build.SourceBranchName'], 'refs/heads/main')
+        )
+      dependsOn: "TerraformShow"
+      pool: server    
+      timeoutInMinutes: "4320" # job times out in 3 days
+      steps:   
+      - task: ManualValidation@0
+        timeoutInMinutes: 1440  # task times out in 1 day
+        inputs:
+            instructions: 'Please validate the build configuration and resume'
+            onTimeout: 'reject'
+
+    - job: TerraformApply
+      displayName: "Terraform Apply"
+      condition:  |
+        or(
+          and(
+            eq(variables['Build.SourceBranchName'], 'refs/heads/main'),
+            succeeded('waitForValidation')
+          ),
+          and(
+            ne(variables['Build.SourceBranchName'], 'refs/heads/main'),
+            eq(${{ parameters.tfApplyBranch }}, true)
+          )
+        )
+      dependsOn: "waitForValidation"
+      steps:
+      - checkout: self
+        persistCredentials: true
+
+      - task: DownloadPipelineArtifact@2 
+        displayName: "Download artifact terraform_folder.zip"
+        inputs: 
+          buildType: 'current' 
+          artifactName: 'terraform_folder.zip' 
+          targetPath: '.'
+
+      - bash: |
+          echo $(System.DefaultWorkingDirectory)
+          echo ${{ parameters.directory }} 
+          cd $(System.DefaultWorkingDirectory)
+          rm -rf ${{ parameters.directory }} 
+          unzip terraform_folder.zip 
+        displayName: Unzip terraform folder
+        
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: ${{ parameters.tfVersion }}
+
+      - task: AWSShellScript@1
+        displayName: "Run Terraform apply"
+        inputs:
+          awsServiceConnectionName:  ${{ parameters.awsServiceConnectionName }}
+          regionName: ${{ parameters.awsRegionName }}
+          scriptType: "inline"
+          inlineScript: |
+            cd ${{parameters.directory}} 
+            export AZDO_PERSONAL_ACCESS_TOKEN=$(ADO_PAT-ADO_MANAGEMENT)
+            terraform apply --auto-approve terraform.tfplan"" 

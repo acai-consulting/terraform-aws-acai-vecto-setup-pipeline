@@ -1,0 +1,28 @@
+variable "vecto_setup_settings" {
+  description = "Info to setup the VECTO CI/CD resources."
+  type = object({
+    aws_settings = object({
+      state_bucket_name = string
+      state_bucket_region = string
+    })
+    ado_settings = object({
+      organization_id   = string
+      organization_name = string
+      project_name      = string
+      agent_pool_name   = string
+      vecto_pipeline_repo = object({
+        repo_name           = optional(string, "aws-ma-pipeline-vecto") # Name of existing or new ADO Repo
+        release_branch_name = optional(string, "release")               # for an existing repo, this must be a new branch name
+      })
+      vecto_pipeline = object({
+        pipeline_name       = optional(string, "AWS-MA-VECTO")
+        variable_group_name = optional(string, "VECTO_ACCESS_TOKEN")
+      })
+    })
+    vecto_repo_settings = object({
+      git_url     = optional(string, "github.com/acai-consulting/")
+      repo_name   = optional(string, "terraform-aws-acai-vecto.git")
+      repo_branch = optional(string, "main")
+    })
+  })
+}
