@@ -48,8 +48,7 @@ parameters:
     default: 1.6.0
 
 variables:
-  - group: CICD_MANAGER_ACCESS_TOKEN
-  - group: REPO_ACCESS_TOKEN
+  - group: VECTO_ACCESS_TOKEN
 
 trigger:
 - main
