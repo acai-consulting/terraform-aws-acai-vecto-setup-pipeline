@@ -62,9 +62,6 @@ stages:
             cd ${{parameters.directory}} 
             terraform init -backend-config="bucket=${{ parameters.awsVectoTfStateBucketName }}" -backend-config="region=${{ parameters.awsRegionName }}"
             terraform validate
-            terraform state rm module.core_cicd_setup.module.core_cicd_setup_ado_side.module.repo_bootstrapping.azuredevops_git_repository_file.file__10-aws-side__azure-pipelines-templates__10_terraform_preparation_yaml
-            terraform state rm module.core_cicd_setup.module.core_cicd_setup_ado_side.module.repo_bootstrapping.azuredevops_git_repository_file.file__10-aws-side__azure-pipelines-templates__20_terraform_approval_apply_yaml
-
 
       - script: |
           echo "Organization (Collection) ID: $(System.CollectionId)"
