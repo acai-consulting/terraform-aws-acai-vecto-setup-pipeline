@@ -1,0 +1,97 @@
+# ACAI VECTO LICENSE AGREEMENT
+
+Effective Date: January 2025
+
+IMPORTANT – READ CAREFULLY: This ACAI VECTO License Agreement ("Agreement") is a legal contract between you ("Licensee" or "Customer") and ACAI GmbH ("ACAI" or "Licensor") governing your use of the ACAI VECTO software, which includes both Terraform and Python code (the "Software"). By installing, copying, or otherwise using the Software, you agree to be bound by the terms of this Agreement. If you do not agree to these terms, do not install or use the Software.
+
+## 1. Grant of License
+
+Subject to the terms and conditions of this Agreement, ACAI grants Licensee a non-exclusive, non-transferable, revocable license to use the Software solely for internal business operations during the term of the underlying license agreement between the parties.
+
+## 2. Ownership and Intellectual Property
+
+ACAI's Rights: The Software, including all modifications and updates, is the sole and exclusive property of ACAI. All intellectual property rights in and to the Software, including any derivative works, are and shall remain with ACAI.
+Licensee Acknowledgment: Licensee acknowledges that no title or ownership in the Software is transferred under this Agreement.
+
+## 3. Permitted Use and Restrictions
+
+Permitted Use: Licensee may install, execute, and use the Software solely for internal operations and in accordance with the terms of the accompanying license agreement.
+Restrictions: Licensee shall not:
+Reproduce, distribute, or otherwise transfer the Software (in whole or in part) to any third party except as expressly permitted in writing by ACAI.
+Reverse engineer, decompile, or disassemble the Software, except as explicitly allowed by applicable law.
+Modify, merge, or create derivative works based on the Software, unless such modifications are expressly authorized by ACAI in writing.
+Remove, obscure, or alter any proprietary notices or legends included in the Software.
+
+## 4. Delivery of Source Code
+
+ACAI provides the Software in source code form. Licensee may:
+
+- Deploy the Software in their environment
+- Make necessary configuration changes
+- Modify configurations for cloud provider compatibility
+- Create backup copies for internal use
+- Create documentation for internal deployment procedures
+
+Licensee may not distribute, sublicense, or create derivative works without written authorization.
+
+## 5. Warranty Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT ANY WARRANTY OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. ACAI DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR OPERATE UNINTERRUPTEDLY, OR THAT ANY DEFECTS WILL BE CORRECTED.
+
+## 6. Limitation of Liability
+
+IN NO EVENT SHALL ACAI OR ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR EXEMPLARY DAMAGES, OR FOR ANY DAMAGES WHATSOEVER (INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR LOSS OF PROFITS, DATA, OR OTHER INTANGIBLE LOSSES) ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE SOFTWARE, WHETHER BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR OTHERWISE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ACAI's total liability under this Agreement shall not exceed the fees paid by Licensee in the 12 months preceding the claim.
+Licensee's total liability shall not exceed fees paid in preceding 6 months, except for willful misconduct.
+
+## 7. Indemnification
+
+Licensee agrees to indemnify, defend, and hold harmless ACAI, its affiliates, and their respective officers, directors, employees, and agents from and against any claims, losses, liabilities, expenses, and damages (including reasonable attorneys’ fees) arising out of or related to Licensee’s use of the Software in violation of this Agreement or any applicable law.
+
+## 8. Term and Termination
+
+Term: This Agreement is effective as of the Effective Date and will continue for the duration of the underlying license agreement between the parties.
+Termination for Cause: ACAI may terminate this Agreement immediately upon notice if Licensee breaches any term or condition of this Agreement.
+Effect of Termination: Upon termination, Licensee shall immediately cease all use of the Software and destroy all copies, including any modifications or derivative works.
+
+- Termination requires 30 days written notice
+- Upon termination, ACAI will provide 90 days transition assistance
+- Licensee retains right to use last version for 180 days post-termination
+
+## 9. Governing Law and Dispute Resolution
+
+Governing Law: This Agreement shall be governed by and construed in accordance with the laws of Schaffhausen, Switzerland, without regard to its conflict of law principles.
+Dispute Resolution: Any disputes arising out of or in connection with this Agreement shall be resolved exclusively in the courts located in Schaffhausen, Switzerland. Licensee consents to the personal jurisdiction of such courts.
+
+## 10. Entire Agreement
+
+This Agreement, together with any documents referenced herein, constitutes the entire agreement between Licensee and ACAI regarding the Software and supersedes all prior or contemporaneous communications, proposals, or representations, whether oral or written.
+
+## 11. Amendments
+
+No modification or amendment of this Agreement shall be binding unless in writing and signed by an authorized representative of ACAI.
+
+## 12. Severability
+
+If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+## 13. Contact Information
+
+For any questions regarding this Agreement or the Software, please contact:
+
+ACAI GmbH - Switzerland
+<contact@acai.gmbh>
+
+## 14. Support and Maintenance
+
+ACAI shall:
+
+- Provide updates and bug fixes
+- Maintain documentation
+- Offer technical support via email
+
+## 15. Confidentiality
+
+Each party shall protect confidential information with reasonable care. This obligation survives termination for 3 years.
+
+BY INSTALLING, COPYING, OR OTHERWISE USING THE SOFTWARE, LICENSEE ACKNOWLEDGES THAT IT HAS READ, UNDERSTOOD, AND AGREES TO BE BOUND BY THE TERMS OF THIS AGREEMENT.
