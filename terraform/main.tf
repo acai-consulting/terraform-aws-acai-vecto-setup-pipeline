@@ -28,7 +28,7 @@ locals {
 # ¦ PROVIDER
 # ---------------------------------------------------------------------------------------------------------------------
 provider "aws" {
-  region = "eu-central-1"
+  region = var.vecto_setup_settings.aws_settings.target_region
 }
 
 provider "azuredevops" {
@@ -44,12 +44,16 @@ data "aws_caller_identity" "current" {}
 # ¦ CORE_CICD_SETUP
 # ---------------------------------------------------------------------------------------------------------------------
 module "core_cicd_setup" {
-  source = "git::https://github.com/acai-consulting/terraform-aws-acf-ado-core-cicd.git//10-setup/ado-oidc?ref=oidc_support"
+  source = "git::https://github.com/acai-consulting/terraform-aws-acai-vecto.git//10-setup/ado-oidc?ref=oidc_support"
 
   aws_settings        = var.vecto_setup_settings.aws_settings
-  ado_settings        = var.ado_settings
-  vecto_repo_settings = var.vecto_repo_settings
+  ado_settings        = var.vecto_setup_settings.ado_settings
+  vecto_repo_settings = var.vecto_setup_settings.vecto_repo_settings
 
   resource_tags = {}
+  providers = {
+    aws = aws
+    azuredevops = azuredevops
+  }
 }
 

@@ -1,5 +1,5 @@
 parameters:
-  - name: awsServiceConnectionName
+  - name: adoServiceConnectionAwsName
     type: string 
   - name: awsRegionName
     type: string
@@ -37,11 +37,7 @@ stages:
 
     - job: waitForValidation
       displayName: Wait for manual approval
-      condition: |
-        and(
-          eq(${{ parameters.tfApplyBranch }}, true), 
-          eq(variables['Build.SourceBranchName'], 'refs/heads/main')
-        )
+      condition: eq(variables['Build.SourceBranchName'], variables['TF_APPLY_BRANCH'])
       dependsOn: "TerraformShow"
       pool: server    
       timeoutInMinutes: "4320" # job times out in 3 days
@@ -55,16 +51,10 @@ stages:
     - job: TerraformApply
       displayName: "Terraform Apply"
       condition:  |
-        or(
           and(
-            eq(variables['Build.SourceBranchName'], 'refs/heads/main'),
-            succeeded('waitForValidation')
-          ),
-          and(
-            ne(variables['Build.SourceBranchName'], 'refs/heads/main'),
-            eq(${{ parameters.tfApplyBranch }}, true)
+            succeeded('waitForValidation'),
+            eq(variables['Build.SourceBranchName'], variables['TF_APPLY_BRANCH'])
           )
-        )
       dependsOn: "waitForValidation"
       steps:
       - checkout: self
@@ -92,10 +82,10 @@ stages:
       - task: AWSShellScript@1
         displayName: "Run Terraform apply"
         inputs:
-          awsServiceConnectionName:  ${{ parameters.awsServiceConnectionName }}
+          awsCredentials:  ${{ parameters.adoServiceConnectionAwsName }}
           regionName: ${{ parameters.awsRegionName }}
           scriptType: "inline"
           inlineScript: |
             cd ${{parameters.directory}} 
             export AZDO_PERSONAL_ACCESS_TOKEN=$(PAT-VECTO_ADO_MANAGEMENT_ACCESS)
-            terraform apply --auto-approve terraform.tfplan"" 
+            terraform apply --auto-approve terraform.tfplan
