@@ -67,7 +67,6 @@ variables:
 
 trigger:
 - main
-- initial_version
 
 stages:
   - template: azure-pipelines-templates/10_terraform_preparation.yml
