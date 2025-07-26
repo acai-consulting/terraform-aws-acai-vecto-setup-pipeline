@@ -106,7 +106,6 @@ stages:
           awsCredentials:  ${{ parameters.adoServiceConnectionAwsName }}
           regionName: ${{ parameters.awsRegionName }}
           scriptType: "inline"
-          continueOnError: true
           inlineScript: |
             cd ${{parameters.directory}} 
             export AZDO_PERSONAL_ACCESS_TOKEN=$(PAT-VECTO_ADO_MANAGEMENT_ACCESS)
