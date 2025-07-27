@@ -1,4 +1,4 @@
-# terraform-aws-acai-vecto-setup-pipeline
+# terraform-acai-vecto-setup-pipeline
 
 <!-- LOGO -->
 <a href="https://acai.gmbh">    
