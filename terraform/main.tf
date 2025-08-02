@@ -44,7 +44,7 @@ data "aws_caller_identity" "current" {}
 # ¦ CORE_CICD_SETUP
 # ---------------------------------------------------------------------------------------------------------------------
 module "core_cicd_setup" {
-  source = "git::https://github.com/acai-consulting/terraform-aws-acai-vecto.git//10-setup/ado-oidc?ref=oidc_support"
+  source = "git::https://github.com/acai-consulting/terraform-aws-acai-vecto.git//azure-devops/10-setup/oidc?ref=main"
 
   aws_settings        = var.vecto_setup_settings.aws_settings
   ado_settings        = var.vecto_setup_settings.ado_settings

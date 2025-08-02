@@ -60,7 +60,7 @@ parameters:
   # Terraform version to install during the run
   - name: tfVersion
     type: string
-    default: 1.6.0
+    default: 1.5.7
 
 variables:
   - group: VECTO_ACCESS_TOKEN
